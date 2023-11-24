@@ -22,3 +22,13 @@ Demo:https://eyever.rolandsimon1.repl.co/dashboard
 
 /system <--- Erről az útvonalról a rendszer alapvető adatait olvassuk le,mint pl a ram és a processzor használata,vagy hány MB szabadmemória áll rendelkezésre.
 /disk <--- Erről az útvonalról pedig a tárhely avagy particiók adatait olvassuk le.
+
+
+Funkciók:
+
+Az eyever képes az összes egységes szerver és rendszer információkat beolvasni és lekérni,azt egységesen.
+De miket is képes beolvasni?
+-Processzor használat
+-Memória,vagy is ram használat
+-Memória szabad egységét
+-És az összes létező partició információt(Lesznek még további információk,csak a dizájn miatt nem igazán tudtam elhelyezni a változókat.)
