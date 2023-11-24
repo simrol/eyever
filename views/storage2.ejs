@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Eyever</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/c0fc838bea.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+  <body>
+    
+     <!---Nav bar-->
+      <nav class="navbar navbar-expand-md navbar-light">
+<button class="navbar-toggler ml-auto mb-2 bg-light" type="button" 
+data-toggle="collapse" data-target="#navbar">
+<span class="navbar-toggler-icon"></span>
+
+</button>
+<div class="collapse navbar-collapse" id="navbar">
+    <div class="container-fluid">
+        <div class="row">
+            <!---Sidebar-->
+            <div class=" col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
+                <br><br><br>
+                <div class="bottom-border pb-3">
+                    
+                    <a href="#" class="text-white "><span id="computerName">Nincs adat.</span></a>
+                </div>
+                <ul class="navbar-nav flex-column mt-4">
+                   <li class="nav-item"><a href="/dashboard" class="nav-link text-white p-3 mb-2
+                    sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>
+                Kezelőfelület</a></li>
+                <li class="nav-item"><a href="/console" class="nav-link text-white p-3 mb-2
+                    sidebar-link">
+                Konzol</a></li>
+                <li class="nav-item"><a href="/storage" class="nav-link text-white p-3 mb-2
+                    current">
+                Tárhely kezelése</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2
+                    sidebar-link"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i>
+                Sales</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2
+                    sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>
+                Analytics</a></li>
+                
+                </ul>
+
+            </div>
+            <!---end of side bar-->
+            <!---Top Nav-->
+<div class="col-xl-10 col-lg-9 col-md-8 ml-auto top-bar fixed-top py-2 top-nav">
+    <div class="row align-item-center">
+   <div class="col-md-4">
+ <h4 class="text-light text-uppercase mb-0">Tárhely kezelése</h4>
+   </div>
+   <div class="col-md-5">
+
+   </div>
+   <div class="col-md-3">
+       <ul class="navbar-nav">
+           <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet">
+            <i class="fas fa-comments text-light fa-lg"></i></a>
+            <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet">
+             <i class="fas fa-bell text-light fa-lg"></i></a>
+             <li class="nav-item ml-md-auto"><a href="#"class="nav-link"
+            data-toggle="modal" data-target="#sign-out">
+             <i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
+       </ul>
+   </div>
+        </div>
+</div>
+            <!---End of Top Nav-->
+        </div>
+    </div>
+</div>
+      </nav>
+      
+    </div>
+      <!----End of Navbar-->
+      <!---Modal-->
+      <div class="modal" id="sign-out">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Kikapcsolás</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Biztos ki szeretnéd kapcsolni a szervert távolról?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id="leaveBtn">
+                        Kikapcsolás
+                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        Mégsem
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        // JavaScript kód a modal bezárásának figyelésére és átirányítás végrehajtására
+        $(document).ready(function () {
+            $('#leaveBtn').on('click', function () {
+                // Itt megadhatod az átirányítás helyét (pl.: 'index.html')
+                window.location.href = '/powerkill';
+            });
+        });
+    </script>
+      <!---End of Modal-->
+      <!---Cards-->
+     
+    <section>
+        <style>/* http://meyerweb.com/eric/tools/css/reset/
+            v5.0.1 | 20191019
+            License: none (public domain)
+         */
+         
+         html, body, div, span, applet, object, iframe,
+         h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+         a, abbr, acronym, address, big, cite, code,
+         del, dfn, em, img, ins, kbd, q, s, samp,
+         small, strike, strong, sub, sup, tt, var,
+         b, u, i, center,
+         dl, dt, dd, ol, ul, li,
+         fieldset, form, label, legend,
+         table, caption, tbody, tfoot, thead, tr, th, td,
+         article, aside, canvas, details, embed,
+         figure, figcaption, footer, header, hgroup,
+         main, menu, nav, output, ruby, section, summary,
+         time, mark, audio, video {
+             margin: 0;
+             padding: 0;
+             border: 0;
+             font-size: 100%;
+             font: inherit;
+             vertical-align: baseline;
+         }
+         /* HTML5 display-role reset for older browsers */
+         article, aside, details, figcaption, figure,
+         footer, header, hgroup, main, menu, nav, section {
+             display: block;
+         }
+         /* HTML5 hidden-attribute fix for newer browsers */
+         *[hidden] {
+             display: none;
+         }
+         body {
+             line-height: 1;
+         }
+         menu, ol, ul {
+             list-style: none;
+         }
+         blockquote, q {
+             quotes: none;
+         }
+         blockquote:before, blockquote:after,
+         q:before, q:after {
+             content: '';
+             content: none;
+         }
+         table {
+             border-collapse: collapse;
+             border-spacing: 0;
+         }
+         
+         body {
+             display: flex;
+             background-color: rgb(233 237 251);
+             height: 100vh;
+             height: 100svh;
+             padding: 2px;
+             align-items: center;
+             justify-content: center;
+         }
+         
+         main {
+             background-color: rgba(255, 255, 255, 0.2);
+             padding: 24px;
+             border-radius: 2rem;
+             border: solid 2px #fff;
+             width: 452px;
+             
+         }
+         
+         .outer {
+    display: flex;
+    gap: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    border: solid 1px #dfdfdf;
+    box-shadow: 0px 7px 8px 3px rgba(0,0,0,0.05);
+    flex-wrap: wrap; 
+    min-width: 300px;
+    align: center;
+    flex: 1; /* Ezt adtuk hozzá a flexbox elrendezéséhez, hogy a gyermek elemek sortörést kapjanak */
+}
+
+.main {
+    flex: 1; /* Ez teszi lehetővé a .main elemek számára, hogy egyenlő részt kapjanak az elrendezésben */
+    min-width: 200px; /* Választható: állítsd be egy minimális szélességet az elemekhez */
+}
+
+
+
+
+
+
+         .headline {
+             display: flex;
+             gap: 0.5rem;
+             align-items: center;
+             font-family: serif;
+             font-weight: 600;
+             font-size: 25px;
+             letter-spacing: 0.5px;
+         }
+         
+         .bars {
+             position: relative;
+             margin-bottom: 8px;
+         }
+         
+         .bar, .bar_percent {
+             background-color: rgb(233 237 251);
+             height: 10px;
+             border-radius: 5px;
+         }
+         
+         .bar_percent {
+             position: absolute;
+             background-color: #000;
+             top: 0;
+             width: 0;
+             max-width: 100%;
+         }
+         
+         
+         p.usage_text {
+             margin-bottom: 12px;
+             font-family: sans-serif;
+             font-size: 12px;
+             letter-spacing: 0.2px;
+             color: rgb(107 114 128);
+         }
+         
+         span.used-text::before {
+             content: attr(data-used);
+         }
+         
+         span.capacity-text::before {
+             content: attr(data-cap);
+         }
+         
+         button {
+             background-color: #000;
+             border: none;
+             color: #fff;
+             padding: 12px 24px;
+             border-radius: 6px;
+             cursor: pointer;
+             transition: ease-in-out background-color 0.5s;
+         }
+         
+         button:hover {
+             background-color: #1a1a1a;
+         }</style>
+         <script>const usageBar = document.querySelector(".bar_percent");
+            const usedText = document.querySelector(".used-text");
+            const capText = document.querySelector(".capacity-text");
+            
+            const usedValue = parseInt(usedText.dataset.used);
+            const capValue = parseInt(capText.dataset.cap);
+            
+            function calcUsageBarWidth() {
+                usedPercentage = usedValue / (capValue * 1024) * 100;
+                usageBar.style.width = usedPercentage + "%";
+            }
+            
+            calcUsageBarWidth();</script>
+        <span id="disk-info">Egy pillanat <i class="fas fa-spinner fa-pulse text-info mr-3"></i></span>
+        <script>
+            // Kliensoldali kód
+            function fetchDiskInfo() {
+                // Aszinkron módon lekérjük a merevlemez információkat
+                fetch('/disk')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Betöltjük az információkat a megfelelő HTML elemekbe
+                        updateDiskInfo(data.diskInfo);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching disk information:', error);
+                        // Kezeljük a hiba esetét
+                    });
+            }
+        
+            // Frissíti a merevlemez információkat az oldalon
+            function updateDiskInfo(diskInfo) {
+                // Itt frissítheted az oldalon a merevlemez információkat
+                // Például:
+                const diskInfoHtml = diskInfo.map(partition => {
+                    return `
+                    <main>
+              <div class="outer">
+                <div class="headline">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.2"
+                    stroke="#000000"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M18.456 10.45a6.45 6.45 0 0 0 -12 -2.151a4.857 4.857 0 0 0 -4.44 5.241a4.856 4.856 0 0 0 5.236 4.444h10.751a3.771 3.771 0 0 0 3.99 -3.54a3.772 3.772 0 0 0 -3.538 -3.992z"
+                    />
+                  </svg>
+                  <h2>${partition.fs} meghajtó</h2>
+                  <br>
+                  <h2>${partition.use.toFixed(2)}% foglalt</h2>
+                </div>
+                <div class="usage">
+                  <div class="bars">
+                    <div class="bar"></div>
+                    <div class="bar_percent"></div>
+                  </div>
+                  <p class="usage_text">
+                    <!-- Use the data attributes to automatically calculate the usage bar width -->
+                    <span class="used-text" data-used="${formatBytes(partition.used)}"></span> /
+                    <span class="capacity-text" data-cap="${formatBytes(partition.size)}"></span> elhasználva
+                  </p>
+                  <h2>${formatBytes(partition.available)} még elérhető</h2>
+                  
+                </div>
+                
+              </div>
+            </main>
+                    `;
+                }).join('');
+        
+                document.getElementById('disk-info').innerHTML = diskInfoHtml;
+            }
+        
+            // Első alkalommal lefuttatjuk a merevlemez információk lekérdezését
+            fetchDiskInfo();
+        
+            // Majd időzítetten frissítjük az információkat (például másodpercenként)
+            setInterval(fetchDiskInfo, 1000);
+        
+            // Segédfüggvény a bájtok méretének formázásához
+            function formatBytes(bytes, decimals = 2) {
+                if (bytes === 0) return '0 Bytes';
+        
+                const k = 1024;
+                const dm = decimals < 0 ? 0 : decimals;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+        
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+            }
+        </script>
+        
+    </section>
+
+      <!---End of Cards-->
+      <!--table-->
+
+      <!---End of Quick post-->
+      <!----Footer-->
+
+      <!---End of Footer-->
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+<style>body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+/*nav bar*/
+.sidebar {
+height: 100vh;
+background-color: #455783;
+
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+box-shadow:black;
+}
+.bottom-border {
+border-bottom: 5px dotted white;
+}
+.sidebar-link{
+    transition: all .4s;
+}
+.sidebar-link:hover{
+    background-color:#C62828;
+    border-radius: 5px;
+}
+.current{
+    background-color:#B71C1C;
+    border-radius: 8px;
+    box-shadow: 2px 5px 5px white;
+    transition: all .3s;
+}
+.current:hover{
+    background-color:#C62828;
+    border-radius: 8px;
+    box-shadow: 2px 5px 5px white;
+    transform: transform: translateY(-1px);
+}
+
+.top-bar {
+background-color:#455783;
+}
+/*input:placeholder{
+    color: white;
+    opacity: 1;
+}*/
+.search-input{
+    background: transparent;
+    
+    border: none;
+    border-radius: 0;
+    border-bottom:2px solid #B71C1C;
+    transition: all .4s;
+}
+.search-input:focus{
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #B71C1C;
+}
+.search-button{
+    border-radius: 50%;
+    padding: 10px 16px;  
+    transition: all .4s; 
+}
+.search-button:hover {
+    background-color: white;
+    transform: translateY(-1px);
+}
+.icon-parent{
+position: relative;
+}
+.icon-bullet ::after{
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    height: 12px;
+    width: 12px;
+    background-color:#B71C1C;
+border-radius: 50%;
+}
+@media (max-width: 768px){
+    .sidebar {
+        position: static;
+        height: auto;
+    }
+    .top-nav{
+        position: static;
+    }
+}
+/*Cards*/
+.card-common{
+    box-shadow: 1px 2px 5px gray;
+   transition: all .4s; 
+}
+.card-common:hover {
+    box-shadow: 2px 3px 15px gray;
+    transform: translateY(-1px);
+}
+/*End of cards*/
+.table-color{
+    background:#DCEDC8;
+}
+.bg-progress{
+    background: #C5E1A5;
+}
+
+.page-item{
+    color: #455783;
+}
+.page-link{
+    color: #455783;
+    
+}
+.page-item.active .page-link{
+    background-color:#455783;
+    border-color: #455783;
+    box-shadow: none;
+}
+/*task list*/
+.task-border{
+    border-left: 3px solid #455783;
+}
+
+.bg-1{
+    background-color: #DCEDC8;
+}
+.bg-2{
+background-color: #C5E1A5;
+}
+.bg-3{
+    background-color: #DCEDC8;
+}
+.bg-4{
+    background-color: #C5E1A5;
+}
+/*End of task list*/
+.bg-button{
+  background:  #455783;
+}
+.bd-bottom{
+    border-bottom: 6px solid #455783;
+}
+input.form-control{
+    color: white;
+}
+</style><script>
+    // Aszinkron módon lekérjük a gép nevét
+    fetch('/computerName')
+        .then(response => response.json())
+        .then(data => {
+            // Betöltjük a gép nevét az HTML elembe
+            document.getElementById('computerName').textContent = '' + data.computerName;
+        })
+        .catch(error => console.error('Hiba történt a gazdagépnév lekérése közben:', error));
+</script>

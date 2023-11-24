@@ -1,0 +1,168 @@
+<!-- public/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webszerver monitorozása</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 10px;
+            margin-bottom: 20px; /* Új sor - a táblázat aljától való távolság */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .terminal-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            padding: 15px;
+            display: block;
+            z-index: 1000;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-width: 400px;
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-scrolling: touch;
+            overscroll-behavior: none;
+        }
+
+        .terminal {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .good {
+            color: green;
+        }
+
+        .warning {
+            color: orange;
+        }
+
+        .critical {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1><span id="computerName">Egy pillanat...</span></h1>
+<table>
+    <tr>
+        <th>Alkatrész</th>
+        <th>Használat (%-ban)</th>
+    </tr>
+    <tr id="cpu-usage">
+        <td>Processzor</td>
+        <td>Loading...</td>
+    </tr>
+    <tr id="memory-usage">
+        <td>Memória</td>
+        <td>Loading...</td>
+    </tr>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class="terminal-container">
+    <div class="terminal" id="terminal">------- Üdv a terminálban! ----------<br></div>
+</div>
+
+<script>
+ function updateResourceUsage() {
+        fetch('/system')
+            .then(response => response.json())
+            .then(data => {
+                updateRow('cpu-usage', 'Processzor', data.cpuUsage.toFixed(2) + '%');
+                updateRow('memory-usage', 'Memória', data.memoryUsage.toFixed(2) + '%');
+
+                setTimeout(updateResourceUsage, 1000);
+
+                if (data.cpuUsage > 80.0 || data.memoryUsage > 80.0) {
+                    addToTerminal(`[Rendszer]: Magas aktív használat! CPU: ${data.cpuUsage.toFixed(2)}%, Memória: ${data.memoryUsage.toFixed(2)}%`);
+                }
+            })
+            .catch(error => console.error('Sikertelen lekérés:', error));
+    }
+
+    function updateRow(rowId, resourceName, usage) {
+        const row = document.getElementById(rowId);
+        row.innerHTML = `
+            <td>${resourceName}</td>
+            <td class="${getUsageColor(usage)}">${usage}</td>
+        `;
+    }
+
+    function getUsageColor(usage) {
+        if (parseFloat(usage) < 70) {
+            return 'good';
+        } else if (parseFloat(usage) < 90) {
+            return 'warning';
+        } else {
+            return 'critical';
+        }
+    }
+
+    function addToTerminal(message) {
+        const terminal = document.getElementById('terminal');
+        terminal.innerHTML += `${message}\n`;
+        terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    document.querySelector('.terminal').addEventListener('touchmove', function(e) {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    });
+
+    updateResourceUsage();
+    function appendToTerminal(message) {
+        const terminal = document.getElementById('terminal');
+        terminal.innerText += '\n' + message;
+        terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    // Kezdeti üzenet
+    appendToTerminal('---------- Itt fognak megjelenni az aktuális hibák,értesítések. -----------');</script>
+
+</body>
+</html>
+<script>
+    // Aszinkron módon lekérjük a gép nevét
+    fetch('/computerName')
+        .then(response => response.json())
+        .then(data => {
+            // Betöltjük a gép nevét az HTML elembe
+            document.getElementById('computerName').textContent = 'Gazdagép Neve: ' + data.computerName;
+        })
+        .catch(error => console.error('Hiba történt a gazdagépnév lekérése közben:', error));
+</script>

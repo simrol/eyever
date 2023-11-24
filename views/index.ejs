@@ -1,0 +1,20 @@
+<!-- public/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webszerver elérhető</title>
+    <center><h1><span id="computerName">Egy pillanat...</span></h1></center>
+<script>
+    // Aszinkron módon lekérjük a gép nevét
+    fetch('/computerName')
+        .then(response => response.json())
+        .then(data => {
+            // Betöltjük a gép nevét az HTML elembe
+            document.getElementById('computerName').textContent = 'Gazdagép Neve: ' + data.computerName;
+        })
+        .catch(error => console.error('Hiba történt a gazdagépnév lekérése közben:', error));
+</script>

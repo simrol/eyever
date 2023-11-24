@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Eyever</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/c0fc838bea.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+  <body>
+     <!---Nav bar-->
+      <nav class="navbar navbar-expand-md navbar-light">
+<button class="navbar-toggler ml-auto mb-2 bg-light" type="button" 
+data-toggle="collapse" data-target="#navbar">
+<span class="navbar-toggler-icon"></span>
+
+</button>
+<div class="collapse navbar-collapse" id="navbar">
+    <div class="container-fluid">
+        <div class="row">
+            <!---Sidebar-->
+            <div class=" col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
+                <br><br><br>
+                <div class="bottom-border pb-3">
+                    
+                    <a href="#" class="text-white "><span id="computerName">Nincs adat</span></a>
+                </div>
+                <ul class="navbar-nav flex-column mt-4">
+                   <li class="nav-item"><a href="/test" class="nav-link text-white p-3 mb-2
+                    current"><i class="fas fa-home text-light fa-lg mr-3"></i>
+                Kezelőfelület</a></li>
+                <li class="nav-item"><a href="/console" class="nav-link text-white p-3 mb-2
+                    sidebar-link"><i></i>
+                Konzol</a></li>
+                <li class="nav-item"><a href="/storage" class="nav-link text-white p-3 mb-2
+                    sidebar-link">
+                Tárhely kezelése</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2
+                    sidebar-link"><i class="fas fa-shopping-cart text-light fa-lg mr-3"></i>
+                Sales</a></li>
+                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2
+                    sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>
+                Analytics</a></li>
+                
+                </ul>
+
+            </div>
+            <!---end of side bar-->
+            <!---Top Nav-->
+<div class="col-xl-10 col-lg-9 col-md-8 ml-auto top-bar fixed-top py-2 top-nav">
+    <div class="row align-item-center">
+   <div class="col-md-4">
+ <h4 class="text-light text-uppercase mb-0">Kezelőfelület</h4>
+   </div>
+   <div class="col-md-5">
+
+   </div>
+   <div class="col-md-3">
+       <ul class="navbar-nav">
+           <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet">
+            <i class="fas fa-comments text-light fa-lg"></i></a>
+            <li class="nav-item icon-parent"><a href="#" class="nav-link icon-bullet">
+             <i class="fas fa-bell text-light fa-lg"></i></a>
+             <li class="nav-item ml-md-auto"><a href="#"class="nav-link"
+            data-toggle="modal" data-target="#sign-out">
+             <i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
+       </ul>
+   </div>
+        </div>
+</div>
+            <!---End of Top Nav-->
+        </div>
+    </div>
+</div>
+      </nav>
+      <!----End of Navbar-->
+      <!---Modal-->
+      <div class="modal" id="sign-out">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Kikapcsolás</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Biztos ki szeretnéd kapcsolni a szervert távolról?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id="leaveBtn">
+                        Kikapcsolás
+                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        Mégsem
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        // JavaScript kód a modal bezárásának figyelésére és átirányítás végrehajtására
+        $(document).ready(function () {
+            $('#leaveBtn').on('click', function () {
+                // Itt megadhatod az átirányítás helyét (pl.: 'index.html')
+                window.location.href = '/powerkill';
+            });
+        });
+    </script>
+      <!---End of Modal-->
+      <!---Cards-->
+    <section>
+ <div class="container-fluid">
+     <div class="row">
+         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+             <div class="row pt-md-5 mt-md-3 mb-5">
+                 <div class="col-xl-3 col-sm-6 p-2">
+                     <div class="card card-common">
+                         <div class="card-body">
+                             <div class="d-flex justify-content-between">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 64C28.7 64 0 92.7 0 128v7.4c0 6.8 4.4 12.6 10.1 16.3C23.3 160.3 32 175.1 32 192s-8.7 31.7-21.9 40.3C4.4 236 0 241.8 0 248.6V320H576V248.6c0-6.8-4.4-12.6-10.1-16.3C552.7 223.7 544 208.9 544 192s8.7-31.7 21.9-40.3c5.7-3.7 10.1-9.5 10.1-16.3V128c0-35.3-28.7-64-64-64H64zM576 352H0v64c0 17.7 14.3 32 32 32H80V416c0-8.8 7.2-16 16-16s16 7.2 16 16v32h96V416c0-8.8 7.2-16 16-16s16 7.2 16 16v32h96V416c0-8.8 7.2-16 16-16s16 7.2 16 16v32h96V416c0-8.8 7.2-16 16-16s16 7.2 16 16v32h48c17.7 0 32-14.3 32-32V352zM192 160v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32zm128 0v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32zm128 0v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32z"/></svg>
+                                 <div class="text-right text-dark">
+                                     <h5>Memória használat</h5>
+                                     <h3><span id="memory-usage">Nincs adat</span></h3>
+                                 </div>
+                             </div>
+                         </div>
+            <div class="card-footer text-dark">
+                <i class="fas fa-spinner fa-pulse text-info mr-3"></i>
+                <span>A használat folyamatosan frissűl</span>
+            </div>
+                     </div>
+
+                 </div>
+                 <div class="col-xl-3 col-sm-6 p-2">
+                        <div class="card card-common">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M176 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64c-35.3 0-64 28.7-64 64H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64v56H24c-13.3 0-24 10.7-24 24s10.7 24 24 24H64c0 35.3 28.7 64 64 64v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448h56v40c0 13.3 10.7 24 24 24s24-10.7 24-24V448c35.3 0 64-28.7 64-64h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448V280h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448V176h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H448c0-35.3-28.7-64-64-64V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H280V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H176V24zM160 128H352c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H160c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32zm192 32H160V352H352V160z"/></svg>
+                                        <div class="text-right text-dark">
+                                            <h5>Processzor használat</h5>
+                                            <h3><span id="cpu-usage">Nincs adat</span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                   <div class="card-footer text-dark">
+                    <i class="fas fa-spinner fa-pulse text-success mr-3"></i>
+                       <span> A használat folyamatosan frissűl</span>
+                   </div>
+                            </div>
+                     
+                    </div>
+                    <div class="col-xl-3 col-sm-6 p-2">
+                            <div class="card card-common">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 64C28.7 64 0 92.7 0 128v7.4c0 6.8 4.4 12.6 10.1 16.3C23.3 160.3 32 175.1 32 192s-8.7 31.7-21.9 40.3C4.4 236 0 241.8 0 248.6V320H576V248.6c0-6.8-4.4-12.6-10.1-16.3C552.7 223.7 544 208.9 544 192s8.7-31.7 21.9-40.3c5.7-3.7 10.1-9.5 10.1-16.3V128c0-35.3-28.7-64-64-64H64zM576 352H0v64c0 17.7 14.3 32 32 32H80V416c0-8.8 7.2-16 16-16s16 7.2 16 16v32h96V416c0-8.8 7.2-16 16-16s16 7.2 16 16v32h96V416c0-8.8 7.2-16 16-16s16 7.2 16 16v32h96V416c0-8.8 7.2-16 16-16s16 7.2 16 16v32h48c17.7 0 32-14.3 32-32V352zM192 160v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32zm128 0v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32zm128 0v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32z"/></svg>
+                                            <div class="text-right text-dark">
+                                                <h5>Maradék memória</h5>
+                                                <h3><span id="freememory">Nincs adat</span></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                       <div class="card-footer text-dark">
+                        <i class="fas fa-spinner fa-pulse text-warning mr-3"></i>
+                           <span>A használat folyamatosan frissűl</span>
+                       </div>
+                                </div>
+                     
+                        </div>
+                        <div class="col-xl-3 col-sm-6 p-2">
+                                <div class="card card-common">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V280.4c-17-15.2-39.4-24.4-64-24.4H64c-24.6 0-47 9.2-64 24.4V96zM64 288H448c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V352c0-35.3 28.7-64 64-64zM320 416a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm128-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>
+                                                <div class="text-right text-dark">
+                                                    <h5>Merevlemez</h5>
+                                                    <h3><a href="/storage">Tárhely kezelése</a></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                           <div class="card-footer text-dark">
+                            <p>Több infó a tárhely kezelése menüben!</p>
+                           </div>
+                                    </div>
+                     
+                            </div>
+             </div>
+         </div>
+     </div>
+ </div>
+     
+    </section>
+
+      <!---End of Cards-->
+      <!--table-->
+
+      <!---End of Quick post-->
+      <!----Footer-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-10 col-lg-9 col-md-8 ml-auto mt-3 bd-bottom">
+            <div class="row border-top pt-3">
+                <div class="col-lg-6 text-center">
+                    <ul class="list-inline">
+                <li class="list-inline-item mr-2">
+                    <a href="https://discord.gg/k7ypbtYj9F" class="text-success">
+                        Eyever - Szervermegfigyelés
+                    </a>
+                </li>
+                
+                </ul>
+             </div>
+                <div class="col-lg-6 text-center text-success">
+                    <p>&copy; 2023 Eyever</p>
+                    
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <!---End of Footer-->
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+<style>body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+/*nav bar*/
+.sidebar {
+height: 100vh;
+background-color: #455783;
+
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+box-shadow:black;
+}
+.bottom-border {
+border-bottom: 5px dotted white;
+}
+.sidebar-link{
+    transition: all .4s;
+}
+.sidebar-link:hover{
+    background-color:#C62828;
+    border-radius: 5px;
+}
+.current{
+    background-color:#B71C1C;
+    border-radius: 8px;
+    box-shadow: 2px 5px 5px white;
+    transition: all .3s;
+}
+.current:hover{
+    background-color:#C62828;
+    border-radius: 8px;
+    box-shadow: 2px 5px 5px white;
+    transform: transform: translateY(-1px);
+}
+
+.top-bar {
+background-color:#455783;
+}
+/*input:placeholder{
+    color: white;
+    opacity: 1;
+}*/
+.search-input{
+    background: transparent;
+    
+    border: none;
+    border-radius: 0;
+    border-bottom:2px solid #B71C1C;
+    transition: all .4s;
+}
+.search-input:focus{
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #B71C1C;
+}
+.search-button{
+    border-radius: 50%;
+    padding: 10px 16px;  
+    transition: all .4s; 
+}
+.search-button:hover {
+    background-color: white;
+    transform: translateY(-1px);
+}
+.icon-parent{
+position: relative;
+}
+.icon-bullet ::after{
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    height: 12px;
+    width: 12px;
+    background-color:#B71C1C;
+border-radius: 50%;
+}
+@media (max-width: 768px){
+    .sidebar {
+        position: static;
+        height: auto;
+    }
+    .top-nav{
+        position: static;
+    }
+}
+/*Cards*/
+.card-common{
+    box-shadow: 1px 2px 5px gray;
+   transition: all .4s; 
+}
+.card-common:hover {
+    box-shadow: 2px 3px 15px gray;
+    transform: translateY(-1px);
+}
+/*End of cards*/
+.table-color{
+    background:#DCEDC8;
+}
+.bg-progress{
+    background: #C5E1A5;
+}
+
+.page-item{
+    color: #455783;
+}
+.page-link{
+    color: #455783;
+    
+}
+.page-item.active .page-link{
+    background-color:#455783;
+    border-color: #455783;
+    box-shadow: none;
+}
+/*task list*/
+.task-border{
+    border-left: 3px solid #455783;
+}
+
+.bg-1{
+    background-color: #DCEDC8;
+}
+.bg-2{
+background-color: #C5E1A5;
+}
+.bg-3{
+    background-color: #DCEDC8;
+}
+.bg-4{
+    background-color: #C5E1A5;
+}
+/*End of task list*/
+.bg-button{
+  background:  #455783;
+}
+.bd-bottom{
+    border-bottom: 6px solid #455783;
+}
+input.form-control{
+    color: white;
+}
+</style><script>
+    // Aszinkron módon lekérjük a gép nevét
+    fetch('/computerName')
+        .then(response => response.json())
+        .then(data => {
+            // Betöltjük a gép nevét az HTML elembe
+            document.getElementById('computerName').textContent = '' + data.computerName;
+        })
+        .catch(error => console.error('Hiba történt a gazdagépnév lekérése közben:', error));
+</script>
+
+<script>
+    function updateResourceUsage() {
+        // Aszinkron módon lekérjük a szerverről az információkat
+        fetch('/system')
+            .then(response => response.json())
+            .then(data => {
+                // Betöltjük az információkat a megfelelő HTML elemekbe
+                updateRow('cpu-usage', '', data.cpuUsage.toFixed(2) + '%');
+                updateRow('memory-usage', '', data.memoryUsage.toFixed(2) + '%');
+                updateRow('freememory', '', data.freeMemoryInfo.toFixed(1) + 'MB')
+                
+
+                // Frissítjük az információkat 1 másodpercenként
+                setTimeout(updateResourceUsage, 1000);
+            })
+            .catch(error => console.error('Error fetching resource usage:', error));
+    }
+
+    function updateRow(rowId, resourceName, usage) {
+        const row = document.getElementById(rowId);
+        row.innerHTML = `
+            <td>${resourceName}</td>
+            <td class="${getUsageColor(usage)}">${usage}</td>
+        `;
+    }
+
+    function getUsageColor(usage) {
+        if (parseFloat(usage) < 70) {
+            return 'good';
+        } else if (parseFloat(usage) < 90) {
+            return 'warning';
+        } else {
+            return 'critical';
+        }
+    }
+
+    // Első alkalommal elindítjuk az információk frissítését
+    updateResourceUsage();
+</script>
