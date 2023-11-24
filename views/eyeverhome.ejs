@@ -407,7 +407,7 @@ input.form-control{
                 // Frissítjük az információkat 1 másodpercenként
                 setTimeout(updateResourceUsage, 1000);
             })
-            .catch(error => console.error('Giba történt adatok lekérésénél:', error));
+            .catch(error => console.error('Hiba történt adatok lekérésénél:', error));
     }
 
     function updateRow(rowId, resourceName, usage) {
