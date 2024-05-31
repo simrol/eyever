@@ -33,4 +33,4 @@ De miket is képes beolvasni?<br>
 -Memória szabad egységét<br>
 -És az összes létező partició információt
 <br>(Lesznek még további információk,csak a dizájn miatt nem igazán tudtam elhelyezni a változókat.)<br>
-t
+
