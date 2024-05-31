@@ -6,7 +6,7 @@ Az eyever telepítése replitre:
 1.Nyiss egy új projektet<br>
 2.Importáld a projektet a következő címen:https://github.com/simrol/eyever.git<br>
 3.Ha az importálás elkészűlt,add meg az indítást: node index.js<br>
-4. Ha nem működne valami akkor gyere a hivatalos eyever szerverre! https://discord.com/invite/k7ypbtYj9F<br>
+4. Ha nem működne valami akkor gyere a hivatalos eyever szerverre! https://discord.gg/nwPWMx74qb<br>
 <br>
 Hibaelhárítások:<br>
 <br>
@@ -16,7 +16,7 @@ Ha a projekt hibaként az express modult írja,hogy nincs telepítve,akkor írd 
 <br>
 Ez a verzió még béta,de ha sikerűl befejeznem akkor kiteszem az egészet :D<br>
 <br>
-Demo:https://eyever.rolandsimon1.repl.co/dashboard<br>
+Demo:https://replit.com/@RolandSimon1/eyever<br>
 <br>
 Útvonalak melyről az adatokat olvassuk le:<br>
 <br>
